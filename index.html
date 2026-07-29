@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Student Score Sheet</title>
 </head>
 <body>
+
+    <h1>Student Score Sheet</h1>
+    <button id="addDataDialogBtn">Add Data</button>
+    <div id="info">
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            
+        </tbody>
+    </table> 
+    <!-- Dialog -->
+    <div class="dialog-container">
+        <div>
+            <h2>Add Data</h2>
+            <div class="field-set">
+                <label for="name">Name</label>
+                <input type="text" id="name">                
+            </div>
+            <div class="field-set">
+                <label for="score">Score</label>
+                <input type="number" id="score">
+            </div>
+            <button id="addDataBtn">Add</button>
+            <button id="closeAddDataBtn">X</button>
+        </div>
+    </div>
     
+    <script src="script.js"></script>
 </body>
 </html>
