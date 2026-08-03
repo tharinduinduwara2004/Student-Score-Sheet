@@ -24,12 +24,12 @@ function closeDialog(){
     }, 100);
 }
 
-const studenta = [];
+const students = [];
 
 function addData(){
     let name = nameInput.value;
-    let score = score = scoreInput.value;
-    if(nmae != '' && score != ''){
+    let score = scoreInput.value;
+    if(name != '' && score != ''){
         students.push(
             {
                 name: name,
@@ -38,6 +38,9 @@ function addData(){
         );
         nameInput.value = '';
         scoreInput.value = '';
+        displayList();
+        closeDialog();
+
     }else{
         alert("Please fill all the fields.");
     }
@@ -47,6 +50,22 @@ addDataBtn.onclick = addData;
 
 //display list
 function displayList(){
+    //sorting the array
+    students.sort(function(a,b){
+        return b.score - a.score;
+    });
+
+    let total = 0;
+    let max = 0;
+    let min = 100;
+
+    students.forEach( student => {
+        if(student.score> max){
+            max = student.scorre;
+        }
+    })
+
+    list.innerHTML = '';
     students.forEach(function(student){
         let record = document.createElement('tr');
         let td0 = document.createElement('td');
