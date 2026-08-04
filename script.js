@@ -60,10 +60,20 @@ function displayList(){
     let min = 100;
 
     students.forEach( student => {
+        student.score = parseInt(student.score);
+
         if(student.score> max){
-            max = student.scorre;
+            max = student.score;
         }
+        if(student.score < min){
+            min = student.score;
+        }
+        total += student.score;
     })
+
+    let average = total/students.length;
+    info.innerHTML = `No. Students: ${students.length} <br>`;
+    info.innerHTML += `Max : ${max} | Min: ${min} | Average: ${average.toFixed(2)}`;
 
     list.innerHTML = '';
     students.forEach(function(student){
@@ -75,9 +85,22 @@ function displayList(){
         let td2 = document.createElement('td');
         td2.innerHTML = student.score;
         let td3 = document.createElement('td');
+        let btn = document.createElement('button');
+        btn.innerHTML = "X";
+        btn.onclick = function(){
+            if(!confirm('Are You sure want to remove?')){
+                return;
+            }
+            let index = students.indexOf(student);
+            students.splice(index,1);
+            //display
+            displayList();
+        }
+
+        td3.appendChild(btn);
 
         record.appendChild(td0);
-        rocord.appendChild(td1);
+        record.appendChild(td1);
         record.appendChild(td2);
         record.appendChild(td3);
         list.appendChild(record);
